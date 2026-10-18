@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Home Page | Task Management Application</title>
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-B/GM4XqrwHnWXNOWMbloTmrYXZg10cakYGmpfsR/bbzQ6JAJI4ihuyADKLnBgrCe" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.2/font/bootstrap-icons.min.css">
+        <link href="css/style.css" rel="stylesheet">
+    </head>
+    <body>
+        <header id="site-header" class="text-lg-start"><h1>Task Management Application</h1></header>
+        <script type="module" src="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-1a/pXj49ZQ1aHEmrJ+gMw1otqoVsYwlEnlD8mIfY2TV03r20Y0CN7uqx1tQogjPL" crossorigin="anonymous"></script>
+        
+        <!--The main tag is used by ARIA so screen readers can jump to the correct part of the page right away-->
+        <main>
+            <section class="py-5 text-center" aria-labelledby="welcome-title">
+                <div class="container">
+                    <h1 id="welcome-title" class="fw-bolder">Welcome to the Task Management Application</h1>
+                    <p class="lead fw-medium">In this Task Management Application, you are able to manage your tasks easily and locally.</p>
+                    <p class="lead fw-medium"><em>To get started, click below:</em></p>
+                    <a href="tasks.html" class="btn-subtle btn-styled theme-accent btn-lg fw-bold" type="button">Manage Your Tasks</a>
+                </div>
+            </section>
+
+            <section class="py-5 bg-body-tertiary" aria-labelledby="features-title">
+                <div class="container">
+                    <h2 id="features-title" class="text-center py-5 fw-bold">Features</h2>
+
+                    <div class="row g-4">
+                        <div class="col-12">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h4 class="card-title fw-medium">Add, Edit and Delete Tasks</h4>
+                                    <p class="card-text">Create new tasks that you need to complete. Edit their name, description, and status.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h4 class="card-title fw-medium">Filter and Sort Your Tasks</h4>
+                                    <p class="card-text">Easily filter and sort your tasks based on due dates, priority, name or status. Also have the option to search for specific tasks.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h4 class="card-title">Task Analytic Dashboard</h4>
+                                    <p class="card-text">Have a small dashboard that visualizes task data. It displays a bar chart showing you the completed vs your pending tasks.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>            
+        </main>
+    </body>
+</html>
