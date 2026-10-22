@@ -1,5 +1,5 @@
 .shadow-accent {
-  box-shadow: 0 20px 70px rgba(188, 124, 231, 0.685); /* swap in your accent color */
+  box-shadow: 0 20px 70px rgba(188, 124, 231, 0.685);
 }
 
 /*Started with bootstrap 6.0 by accident and wanted to recreate one of their button designs after I switched back to 5.3.3 */
