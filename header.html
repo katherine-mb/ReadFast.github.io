@@ -1,17 +1,26 @@
-<header class="site-header">
-  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+<header class="header-placeholder"></header>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-accent">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">
-            <img src="./images/logoBook.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">BookManagement</a>
+      <a class="navbar-brand d-flex align-items-center fs-2 fw-medium" href="index.html">
+        <img src="images/logoBook.png" width="30" height="30" class="me-2" alt="ReadFast logo">
+        Read<span class="fst-italic text-color-accent fw-bold">Fast</span>
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+              data-bs-target="#navbarContent" aria-controls="navbarContent"
+              aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarContent">
+        <ul class="navbar-nav mx-lg-auto fw-bold">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="tasks.html">Book Management</a></li>
+          <li class="nav-item"><a class="nav-link" href="progresscalc.html">Progress Calculator</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
+      </div>
     </div>
-    <table>
-          <tr>
-              <td><a href="index.html">Home</a></td>
-              <td><a href="tasks.html">Tasks</a></td>
-              <td><a href="progresscalc.html">Progress Calculator</a></td>
-              <td><a href="about.html">About</a></td>
-              <td><a href="contact.html">Contact</a></td>
-          </tr>
-      </table>
   </nav>
 </header>   
