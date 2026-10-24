@@ -1,6 +1,9 @@
 .shadow-accent {
   box-shadow: 0 20px 70px rgba(188, 124, 231, 0.685);
 }
+.shadow-accent-2 {
+  box-shadow: 0 5px 10px rgba(218, 170, 250, 0.541);
+}
 
 h1,h2{
     color: #4b3f7a;
@@ -19,4 +22,8 @@ h1,h2{
 }
 .text-color-accent{
     color: #4b3f7a;
+}
+
+.bg-accent{
+  background-color: #dfddff48;
 }
