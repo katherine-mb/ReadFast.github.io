@@ -2,6 +2,10 @@
   box-shadow: 0 20px 70px rgba(188, 124, 231, 0.685);
 }
 
+h1,h2{
+    color: #4b3f7a;
+}
+
 /*Started with bootstrap 6.0 by accident and wanted to recreate one of their button designs after I switched back to 5.3.3 */
 .theme-accent {
   --bs-btn-border-width: 0;       
