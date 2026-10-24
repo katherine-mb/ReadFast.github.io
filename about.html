@@ -84,10 +84,56 @@
 
             <section class="py-5" aria-labelledby="testimonials-title">
                 <div class="container">
-                    <h2 id="testimonials-title" class="text-center fw-bold mb-5">What Users Say</h2>
+                    <h2 id="testimonials-title" class="text-center fw-bold mb-5">What Our Users Say</h2>
+                    <div id="testimonialCarousel" class="carousel slide carousel-dark bg-body-accent rounded-4" data-bs-ride="carousel">
+                        <div class="carousel-indicators">
+                            <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Testimonial 1"></button>
+                            <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="1" aria-label="Testimonial 2"></button>
+                            <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="2" aria-label="Testimonial 3"></button>
+                        </div>
 
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <figure class="text-center px-5 pt-5 pb-5 mb-4 mx-lg-5">
+                                    <blockquote class="blockquote">
+                                        <i class="bi bi-person-circle display-1 text-color-accent"></i>
+                                        <p>"The chart of read and currently reading books keeps me motivated every week."</p>
+                                    </blockquote>
+                                    <figcaption class="blockquote-footer mb-0">New York Times</figcaption>
+                                </figure>
+                            </div>
 
+                            <div class="carousel-item">
+                                <figure class="text-center px-5 pt-5 pb-5 mb-4 mx-lg-5">
+                                    <blockquote class="blockquote">
+                                        <i class="bi bi-person-circle display-1 text-color-accent"></i>
+                                        <p>“I finally have my whole TBR in one place.”</p>
+                                    </blockquote>
+                                    <figcaption class="blockquote-footer mb-0">Haley Pham, YouTuber & Author</figcaption>
+                                </figure>
+                            </div>
 
+                            <div class="carousel-item">
+                                <figure class="text-center px-5 pt-5 pb-5 mb-4 mx-lg-5">
+                                    <blockquote class="blockquote">
+                                        <i class="bi bi-person-circle display-1 text-color-accent"></i>
+                                        <p>“The reading speed test was surprisingly accurate.”</p>
+                                    </blockquote>
+                                    <figcaption class="blockquote-footer mb-0">Anonymous</figcaption>
+                                </figure>
+                            </div>
+
+                        </div>
+
+                        <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
                 </div>
             </section>
 
