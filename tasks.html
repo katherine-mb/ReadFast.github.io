@@ -10,10 +10,93 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.2/font/bootstrap-icons.min.css">
         <link href="./css/styles.css" rel="stylesheet">
         <script src="./js/main.js" defer></script>
+        <script src="./js/tasks.js" defer></script>
     </head>
     <body>
         <header id="header-placeholder"></header>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
+        <main>
+            <section class="py-5 text-center" aria-labelledby="form-start">
+                <div class="container col-lg-8 justify-content-center">
+
+                    <div class="container py-4 col-lg-12 justify-content-center">
+                        <div class="table-responsive">
+                            <table class="table align-middle">
+                                <td>
+                                    <div class="col-6">
+                                        <div class="card text-center">
+                                            <div class="class-body">
+                                                <div class="small text-muted">Total</div>
+                                                <div class="fs-3" id="count-total">0</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="card text-center">
+                                            <div class="card-body">
+                                                <div class="small text-muted">Pending</div>
+                                                <div class="fs-3" id="count-pending">0</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="card text-center">
+                                            <div class="card-body">
+                                                <div class="small text-muted">Completed</div>
+                                                <div class="fs-3" id="count-completed">0</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h2 class="h5 fw-bold" id="form-heading">Add Book</h2>
+                                            <form id="task-form" novalidate>
+                                                <div class="mb-3">
+                                                    <label class="form-label" for="book-title">Book name</label>
+                                                    <input type="text" class="form-control" id="book-title" required>
+                                                    <div class="invalid-feedback">Please enter a task name.</div>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label class="form-label" for="task-desc">Task</label>
+                                                    <textarea class="form-control" id="task-desc" rows="3"></textarea>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label class="form-label" for="task-due">Due date</label>
+                                                    <input type="date" class="form-control" id="task-due" required>
+                                                    <div class="invalid-feedback">Please choose a due date.</div>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label class="form-label" for="task-status">Status</label>
+                                                    <select class="form-select" id="task-status">
+                                                        <option>Read</option><option selected>Currently Reading</option><option>Want to Read</option>
+                                                    </select>
+                                                </div>
+                                                <button type="submit" class="btn btn-lg fw-bold theme-accent" id="submit-btn">Add Task</button>
+                                                <button type="button" class="btn btn-lg fw-bold text-danger" id="cancel-btn">Cancel</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </td>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="container py-4 col-lg-8 justify-content-center">
+                    <div class="table-responsive">
+                        <table class="table table-hover align-middle">
+                            <thead class="table-light">
+                                <tr><th>Book</th><th>Description</th><th>Due</th><th>Status</th><th>Completed</th><th>Edit</th></tr>
+                            </thead>
+                            <tbody id="task-body"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </main>
     </body>
 </html>

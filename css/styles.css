@@ -27,3 +27,7 @@ h1,h2{
 .bg-accent{
   background-color: #dfddff48;
 }
+
+.table > tbody > tr.row-completed > * {
+  --bs-table-bg: #e6d9f59c;   
+}
