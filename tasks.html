@@ -22,6 +22,7 @@
 
                     <div class="container py-4 col-lg-12 justify-content-center">
                         <div class="table-responsive">
+
                             <table class="table align-middle">
                                 <td>
                                     <div class="col-6">
@@ -82,11 +83,44 @@
                                     </div>
                                 </td>
                             </table>
+
                         </div>
                     </div>
                 </div>
 
                 <div class="container py-4 col-lg-8 justify-content-center">
+                    <table class="table align-middle">
+                        <td>
+                            <div class="col-md-12">
+                                <select class="form-select" id="sort-by" aria-label="Sort tasks">
+                                <option value="added">Date added</option>
+                                <option value="due-asc">Due date (soonest first)</option>
+                                <option value="due-desc">Due date (latest first)</option>
+                                <option value="name-asc">Name (A-Z)</option>
+                                <option value="name-desc">Name (Z-A)</option>
+                                </select>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-md-12">
+                                <select class="form-select" id="filter-status" aria-label="Filter by status">
+                                <option value="all">All</option>
+                                <option value="pending">Pending</option>
+                                <option value="completed">Completed</option>
+                                </select>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-md-12 py-2">
+                                <input type="search" class="form-control" id="search-input"
+                                    placeholder="Search by book or description..." aria-label="Search tasks">
+                            </div>
+                        </td>
+                    </table>
+                    
+
+                    
+
                     <div class="table-responsive">
                         <table class="table table-hover align-middle">
                             <thead class="table-light">
@@ -96,6 +130,7 @@
                         </table>
                     </div>
                 </div>
+
             </section>
         </main>
     </body>
