@@ -1,3 +1,5 @@
+// Task management
+
 function loadTasks() {
   return JSON.parse(localStorage.getItem("tasks")) || [];
 }
@@ -8,6 +10,8 @@ function saveTasks() {
 let tasks = loadTasks();
 let editId = null;
 
+// Tasks section
+
 const form = document.querySelector("#task-form");
 const titleInput = document.querySelector("#book-title");
 const descInput = document.querySelector("#task-desc");
@@ -17,6 +21,41 @@ const submitBtn = document.querySelector("#submit-btn");
 const cancelBtn = document.querySelector("#cancel-btn");
 const formHeading = document.querySelector("#form-heading");
 const tableBody = document.querySelector("#task-body");
+
+// Filtering section
+
+const searchInput = document.querySelector("#search-input");
+const filterStatus = document.querySelector("#filter-status");
+const sortBy = document.querySelector("#sort-by");
+
+function filteredTasks() {
+  const query = searchInput.value.toLowerCase();
+  const statusFilter = filterStatus.value;
+  const sortChocie = sortBy.value;
+
+  let result = tasks.filter(function (task) {
+    if (statusFilter === "completed" && !task.completed) return false;
+    if (statusFilter === "pending" && task.completed) return false;
+
+    if (query !== "") {
+      const text = (task.title + " " + task.description).toLowerCase();
+      if (!text.includes(query)) return false;
+    }
+    return true;
+  });
+
+  if (sortChoice === "due-asc") {
+    result.sort((a, b) => a.dueDate.localeCompare(b.dueDate));
+  } else if (sortChoice === "due-desc") {
+    result.sort((a, b) => b.dueDate.localeCompare(a.dueDate));
+  } else if (sortChoice === "name-asc") {
+    result.sort((a, b) => a.title.localeCompare(b.title));
+  } else if (sortChoice === "name-desc") {
+    result.sort((a, b) => b.title.localeCompare(a.title));
+  }
+
+  return result;
+}
 
 function escapeHtml(text) {
   const div = document.createElement("div");
@@ -33,13 +72,21 @@ const statusColors = {
 function renderTable() {
   tableBody.innerHTML = "";
 
+  const getTasks = filteredTasks();
+
   if (tasks.length === 0) {
     tableBody.innerHTML =
       '<tr><td colspan="6" class="text-center text-muted">No book tasks yet.</td></tr>';
     return;
   }
 
-  tasks.forEach(function (task) {
+  if (getTasks.length === 0) {
+    tableBody.innerHTML =
+      '<tr><td colspan="6" class="text-center text-muted">No tasks match your search or filter.</td></tr>';
+    return;
+  }
+
+  getTasks.forEach(function (task) {
     const row = document.createElement("tr");
     if (task.completed) row.classList.add("row-completed");
 
@@ -152,5 +199,9 @@ tableBody.addEventListener("click", function (e) {
   saveTasks();
   renderAll();
 });
+
+searchInput.addEventListener("input", renderAll);
+filterStatus.addEventListener("change", renderAll);
+sortBy.addEventListener("change", renderAll);
 
 renderAll();
