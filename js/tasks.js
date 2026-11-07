@@ -28,32 +28,57 @@ const searchInput = document.querySelector("#search-input");
 const filterStatus = document.querySelector("#filter-status");
 const sortBy = document.querySelector("#sort-by");
 
+// Analytics setcion
+
+const barCanvas = document.querySelector("#bar-chart");
+const board = document.querySelector("#board");
+const columns = document.querySelectorAll(".kanban-column");
+
+function compareDueAsc(a, b) {
+  return a.dueDate.localeCompare(b.dueDate);
+}
+function compareDueDesc(a, b) {
+  return b.dueDate.localeCompare(a.dueDate);
+}
+function compareNameAsc(a, b) {
+  return a.title.localeCompare(b.title);
+}
+function compareNameDesc(a, b) {
+  return b.title.localeCompare(a.title);
+}
+
 function filteredTasks() {
   const query = searchInput.value.toLowerCase();
   const statusFilter = filterStatus.value;
-  const sortChocie = sortBy.value;
+  const sortChoice = sortBy.value;
 
   let result = tasks.filter(function (task) {
-    if (statusFilter === "completed" && !task.completed) return false;
-    if (statusFilter === "pending" && task.completed) return false;
+    if (statusFilter === "completed" && task.completed === false) {
+      return false;
+    }
+    if (statusFilter === "pending" && task.completed === true) {
+      return false;
+    }
 
     if (query !== "") {
       const text = (task.title + " " + task.description).toLowerCase();
-      if (!text.includes(query)) return false;
+      if (text.includes(query) === false) {
+        return false;
+      }
     }
     return true;
   });
 
   if (sortChoice === "due-asc") {
-    result.sort((a, b) => a.dueDate.localeCompare(b.dueDate));
+    result.sort(compareDueAsc);
   } else if (sortChoice === "due-desc") {
-    result.sort((a, b) => b.dueDate.localeCompare(a.dueDate));
+    result.sort(compareDueDesc);
   } else if (sortChoice === "name-asc") {
-    result.sort((a, b) => a.title.localeCompare(b.title));
+    result.sort(compareNameAsc);
   } else if (sortChoice === "name-desc") {
-    result.sort((a, b) => b.title.localeCompare(a.title));
+    result.sort(compareNameDesc);
   }
-
+  
   return result;
 }
 
@@ -88,7 +113,14 @@ function renderTable() {
 
   getTasks.forEach(function (task) {
     const row = document.createElement("tr");
-    if (task.completed) row.classList.add("row-completed");
+    if (task.completed === true) {
+      row.classList.add("row-completed");
+    }
+
+    let disabledAttribute = "";
+    if (task.completed === true) {
+      disabledAttribute = "disabled";
+    }
 
     row.innerHTML = `
       <td>${escapeHtml(task.title)}</td>
@@ -96,7 +128,7 @@ function renderTable() {
       <td>${task.dueDate}</td>
       <td><span class="badge text-bg-${statusColors[task.status]}">${task.status}</span></td>
       <td>
-        <button class="btn btn-sm btn-outline-success" data-action="complete" data-id="${task.id}" ${task.completed ? "disabled" : ""}>
+        <button class="btn btn-sm btn-outline-success" data-action="complete" data-id="${task.id}" ${disabledAttribute}>
           <i class="bi bi-check-lg"></i>
         </button>
       </td>
@@ -114,16 +146,45 @@ function renderTable() {
 
 function renderSummary() {
   const total = tasks.length;
-  const completed = tasks.filter(t => t.completed).length;
+  const completed = countCompleted();
 
   document.querySelector("#count-total").textContent = total;
   document.querySelector("#count-completed").textContent = completed;
   document.querySelector("#count-pending").textContent = total - completed;
 }
 
+function findTaskById(id) {
+  for (let i = 0; i < tasks.length; i++) {
+    if (tasks[i].id === id) {
+      return tasks[i];
+    }
+  }
+  return null;
+}
+
+function countCompleted() {
+  let completed = 0;
+  for (let i = 0; i < tasks.length; i++) {
+    if (tasks[i].completed === true) {
+      completed = completed + 1;
+    }
+  }
+  return completed;
+}
+
 function renderAll() {
-  renderTable();
-  renderSummary();
+  if (tableBody !== null) {
+    renderTable();
+    renderSummary();
+  }
+
+  if (barCanvas !== null) {
+    renderCharts();
+  }
+
+  if (board !== null) {
+    renderBoard();
+  }
 }
 
 function resetForm() {
@@ -135,73 +196,165 @@ function resetForm() {
   cancelBtn.classList.add("d-none");
 }
 
-form.addEventListener("submit", function (e) {
-  e.preventDefault();
+if (form !== null) {
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
 
-  if (!form.checkValidity()) {
-    form.classList.add("was-validated");
-    return;
-  }
+    if (!form.checkValidity()) {
+      form.classList.add("was-validated");
+      return;
+    }
 
-  const data = {
-    title: titleInput.value.trim(),
-    description: descInput.value.trim(),
-    dueDate: dueInput.value,
-    status: statusInput.value
-  };
+    const data = {
+      title: titleInput.value.trim(),
+      description: descInput.value.trim(),
+      dueDate: dueInput.value,
+      status: statusInput.value
+    };
 
-  if (editId === null) {
-    tasks.push({ id: Date.now(), ...data, completed: false });
+    if (editId === null) {
+      tasks.push({ id: Date.now(), ...data, completed: false});
+    } else {
+      const task = findTaskById(editId);
+      Object.assign(task, data);  
+    }
+
+    saveTasks();
+    resetForm();
+    renderAll();
+  });
+  cancelBtn.addEventListener("click", resetForm);
+}
+
+if(tableBody !== null) {
+  tableBody.addEventListener("click", function (e) {
+    const btn = e.target.closest("button");
+
+    if (btn === null) {
+      return;
+    }
+
+    const id = Number(btn.dataset.id);
+    const action = btn.dataset.action;
+
+    if (action === "delete") {
+      if (confirm("Delete this book task?")) {
+        const remainingTasks = [];
+        for (let i = 0; i < tasks.length; i++) {
+          if (tasks[i].id !== id) {
+            remainingTasks.push(tasks[i]);
+          }
+        }
+        tasks = remainingTasks;
+
+        if (editId === id) {
+          resetForm();
+        }
+      }
+    }
+
+    if (action === "complete") {
+      const task = findTaskById(id);
+      task.completed = true;
+    }
+
+    if (action === "edit") {
+      const task = findTaskById(id);
+      titleInput.value = task.title;
+      descInput.value = task.description;
+      dueInput.value = task.dueDate;
+      statusInput.value = task.status;
+      editId = id;
+      formHeading.textContent = "Editing Book Task...";
+      submitBtn.textContent = "Save Changes";
+      cancelBtn.classList.remove("d-none");
+      titleInput.focus();
+      return;
+    }
+
+    saveTasks();
+    renderAll();
+  });
+}
+
+
+let barChart = null;
+
+function renderCharts() {
+  const completed = countCompleted();
+  const pending = tasks.length - completed;
+
+  if (barChart === null) {
+    barChart = new Chart(barCanvas, {
+      type: "bar",
+      data: {
+        labels: ["Completed", "Pending"],
+        datasets: [{
+          label: "Tasks",
+          data: [completed, pending],
+          backgroundColor: ["#b497d6", "#adb5bd"]
+        }]
+      },
+      options: {
+        plugins: { legend: { display: false } },
+        scales: { y: { beginAtZero: true, ticks: { precision: 0 } } }
+      }
+    });
   } else {
-    const task = tasks.find(t => t.id === editId);
-    Object.assign(task, data);  
+    barChart.data.datasets[0].data = [completed, pending];
+    barChart.update();
   }
+}
 
-  saveTasks();
-  resetForm();
-  renderAll();
-});
+function renderBoard() {
+  for (let x = 0; x < columns.length; x++) {
+    const column = columns[x];
+    const columnName = column.dataset.column;
 
-cancelBtn.addEventListener("click", resetForm);
+    column.innerHTML = "";
+    let cardCount = 0;
 
-tableBody.addEventListener("click", function (e) {
-  const btn = e.target.closest("button");
-  if (!btn) return;
+    for (let i = 0; i < tasks.length; i++) {
+      const task = tasks[i];
 
-  const id = Number(btn.dataset.id);
-  const action = btn.dataset.action;
+      if (task.status !== columnName) {
+        continue;
+      }
 
-  if (action === "delete") {
-    if (confirm("Delete this book task?")) {
-      tasks = tasks.filter(t => t.id !== id);
-      if (editId === id) resetForm();
+      cardCount = cardCount + 1;
+
+      let cardClass = "card mb-2 kanban-card";
+      if (task.completed === true) {
+        cardClass = cardClass + " done";
+      }
+
+      const card = document.createElement("div");
+      card.className = cardClass;
+      card.innerHTML = `
+        <div class="card-body p-2">
+          <div class="fw-bold">${escapeHtml(task.title)}</div>
+          <div class="small">${escapeHtml(task.description)}</div>
+          <div class="small text-muted mt-1">Due: ${task.dueDate}</div>
+        </div>`;
+      column.appendChild(card);
+    }
+
+    if (cardCount === 0) {
+      column.innerHTML =
+        '<p class="text-muted small text-center mb-0">No tasks</p>';
     }
   }
+}
 
-  if (action === "complete") {
-    tasks.find(t => t.id === id).completed = true;
-  }
 
-  if (action === "edit") {
-    const task = tasks.find(t => t.id === id);
-    titleInput.value = task.title;
-    descInput.value = task.description;
-    dueInput.value = task.dueDate;
-    statusInput.value = task.status;
-    editId = id;
-    formHeading.textContent = "Editing Book Task...";
-    submitBtn.textContent = "Save Changes";
-    cancelBtn.classList.remove("d-none");
-    titleInput.focus();
-    return;
-  }
-
-  saveTasks();
-  renderAll();
-});
-
-searchInput.addEventListener("input", renderAll);
-filterStatus.addEventListener("change", renderAll);
-sortBy.addEventListener("change", renderAll);
+if (searchInput !== null) {
+  searchInput.addEventListener("input", renderAll);
+}
+if (filterStatus !== null) {
+  filterStatus.addEventListener("change", renderAll);
+}
+if (sortBy !== null) {
+  sortBy.addEventListener("change", renderAll);
+}
 
 renderAll();

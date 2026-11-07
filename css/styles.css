@@ -31,3 +31,11 @@ h1,h2{
 .table > tbody > tr.row-completed > * {
   --bs-table-bg: #e6d9f59c;   
 }
+
+.kanban-column {
+  min-height: 250px;
+  box-shadow: 0 5px 10px rgba(218, 170, 250, 0.541);
+}
+.kanban-card.done {
+  background-color: #e6d9f5;   
+}
