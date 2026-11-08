@@ -190,7 +190,6 @@ function renderAll() {
 function resetForm() {
   editId = null;
   form.reset();
-  form.classList.remove("was-validated");
   formHeading.textContent = "Add Book";
   submitBtn.textContent = "Add Book";
   cancelBtn.classList.add("d-none");
@@ -199,11 +198,6 @@ function resetForm() {
 if (form !== null) {
   form.addEventListener("submit", function (e) {
     e.preventDefault();
-
-    if (!form.checkValidity()) {
-      form.classList.add("was-validated");
-      return;
-    }
 
     const data = {
       title: titleInput.value.trim(),

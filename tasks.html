@@ -55,20 +55,18 @@
                                     <div class="card">
                                         <div class="card-body">
                                             <h2 class="h5 fw-bold" id="form-heading">Add Book</h2>
-                                            <form id="task-form" novalidate>
+                                            <form id="task-form">
                                                 <div class="mb-3">
                                                     <label class="form-label" for="book-title">Book name</label>
                                                     <input type="text" class="form-control" id="book-title" required>
-                                                    <div class="invalid-feedback">Please enter a task name.</div>
                                                 </div>
                                                 <div class="mb-3">
                                                     <label class="form-label" for="task-desc">Task</label>
-                                                    <textarea class="form-control" id="task-desc" rows="3"></textarea>
+                                                    <textarea class="form-control" id="task-desc" rows="3" required></textarea>
                                                 </div>
                                                 <div class="mb-3">
                                                     <label class="form-label" for="task-due">Due date</label>
                                                     <input type="date" class="form-control" id="task-due" required>
-                                                    <div class="invalid-feedback">Please choose a due date.</div>
                                                 </div>
                                                 <div class="mb-3">
                                                     <label class="form-label" for="task-status">Status</label>
@@ -146,7 +144,7 @@
             </section>
 
             <section>
-                
+
             </section>
 
         </main>
