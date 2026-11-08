@@ -10,6 +10,7 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.2/font/bootstrap-icons.min.css">
         <link href="./css/styles.css" rel="stylesheet">
         <script src="./js/main.js" defer></script>
+        <script src="./js/contact.js" defer></script>
     </head>
     <body>
         <header id="header-placeholder"></header>
@@ -20,6 +21,115 @@
                     <h1 id="contact-title" class="fw-bolder text-center mb-4">Contact Us</h1>
                     <p class="fw-standard lead">Please feel free to contact us regarding any questions or feedback you may have that can either help improve our website, or add any new features!</p>
                     <p class="fw-standard lead">Complete the form below in order to stay in touch!</p>
+                </div>
+            </section>
+            <section class = "py-4 text-center">
+                <div class = "container">
+                    <div class = "row justify-content-center">
+                        <div class = "col-md-8 col-lg-6">
+                            <div class = "card">
+                                <h2 class = "fw-bold card-header bg-accent text-color-accent">Contact Form</h2>
+                                <div class = "card-body">
+                                    <form id = "contact-form">
+                                        <div class = "mb-3">
+                                            <label class = "form-label fw-bold text-color-accent" for = "contact-name">Name:</label>
+                                            <input type = "text" class = "form-control" id = "contact-name" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class = "form-label fw-bold text-color-accent" for = "contact-email">Email:</label>
+                                            <input type = "email" class = "form-control" id = "contact-email" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class = "form-label fw-bold text-color-accent" for = "contact-subject">Subject:</label>
+                                            <select class="form-select text-center text-muted" id="contact-subject">
+                                                <option>Bug</option><option selected>Feedback</option><option>Help</option><option>Other...</option>
+                                            </select>
+                                        </div>
+                                        <div class = "mb-3">
+                                            <label class = "form-label fw-bold text-color-accent" for = "contact-message">Message:</label>
+                                            <textarea class = "form-control" id = "contact-message" rows = "5" required></textarea>
+                                        </div>
+                                        <div class = "text-center">
+                                            <button type = "submit" class = "btn btn-lg fw-bold theme-accent">Send Message</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <div class = "modal fade" id = "confirm-modal" tabindex = "-1" aria-labelledby = "confirm-title" aria-hidden = "true">
+                <div class = "modal-dialog modal-dialog-centered">
+                    <div class = "modal-content">
+                        <div class = "modal-header">
+                            <h2 class = "modal-title h5" id="confirm-title">Message sent</h2>
+                            <button type = "button" class = "btn-close" data-bs-dismiss = "modal" aria-label = "Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Thank you, <strong id = "confirm-name"></strong>! Here is what you wrote:</p>
+                            <dl class = "mb-0">
+                                <dt>Email</dt>
+                                <dd id = "confirm-email"></dd>
+                                <dt>Subject</dt>
+                                <dd id = "confirm-subject"></dd>
+                                <dt>Message</dt>
+                                <dd id = "confirm-message" class = "text-color-accent"></dd>
+                            </dl>
+                        </div>
+                        <div class = "modal-footer">
+                            <button type = "button" class = "btn fw-bold theme-accent" data-bs-dismiss = "modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <section class = "py-5 text-center" aria-labelledby="map-office">
+                <div class = "container">
+                    <div class = "row justify-content-center mt-5">
+                        <div class = "col-md-8 col-lg-6">
+                            <h2 class = "h4 fw-bold text-center text-color-accent mb-3" id = "map-office">Find Us</h2>
+                            <div class = "ratio ratio-16x9">
+                                <iframe
+                                    src = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12575.172795045788!2d23.81464711698034!3d38.00528386600362!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14a199709f059559%3A0xad1dacf4713268b2!2sAmerican%20College%20of%20Greece!5e0!3m2!1sen!2sgr!4v1794143257704!5m2!1sen!2sgr"
+                                    title = "map showing our office"
+                                    loading = "lazy"
+                                    referrerpolicy = "strict-origin-when-cross-origin"
+                                    allowfullscreen>
+                                </iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class = "py-5 text-center" aria-labelledby="social-links">
+                <div class = "container">
+                    <h2 class = "fw-bold text-color-accent py-2">Follow Us</h2>
+                </div>
+                <div class = "row justify-content-center">
+                    <div class = "col-md-8 col-lg-6">
+                        <div class = "row text-center g-3">
+                            <div class = "col-3">
+                                <a href = "https://www.instagram.com/deree_acg/" class = "text-link fs-1">
+                                    <i class = "bi bi-instagram"></i>
+                                </a>
+                            </div>
+                            <div class = "col-3">
+                                <a href = "https://www.x.com/DEREE_ACG/" class = "text-link fs-1">
+                                    <i class = "bi bi-twitter-x"></i>
+                                </a>
+                            </div>
+                            <div class = "col-3">
+                                <a href = "https://www.facebook.com/DereeTheAmericanCollegeOfGreece/" class = "text-link fs-1">
+                                    <i class = "bi bi-facebook"></i>
+                                </a>
+                            </div>
+                            <div class = "col-3">
+                                <a href = "https://www.github.com/katherine-mb/" class = "text-link fs-1">
+                                    <i class = "bi bi-github"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>         
                 </div>
             </section>
         </main>
