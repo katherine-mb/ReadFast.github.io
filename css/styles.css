@@ -9,6 +9,15 @@ h1,h2{
     color: #4b3f7a;
 }
 
+:root {
+  --bs-body-font-family: "Inter", system-ui, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6,
+.navbar-brand {
+  font-family: "Playfair Display", Georgia, serif;
+}
+
 /*Started with bootstrap 6.0 by accident and wanted to recreate one of their button designs after I switched back to 5.3.3 */
 .theme-accent {
   --bs-btn-border-width: 0;       
@@ -91,4 +100,31 @@ main {
   outline-style: solid;
   outline-color: #4b3f7a;
   outline-width: 1px;
+}
+
+.card {
+  border: none;
+  border-radius: 1rem;
+  box-shadow: 0 4px 14px rgba(142, 107, 184, 0.15);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 22px rgba(142, 107, 184, 0.25);
+}
+
+.btn {
+  border-radius: 2rem;
+  transition: transform 0.15s ease, background-color 0.2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 0.25rem rgba(180, 151, 214, 0.35);
 }
