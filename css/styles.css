@@ -10,12 +10,12 @@ h1,h2{
 }
 
 :root {
-  --bs-body-font-family: "Inter", system-ui, sans-serif;
+  --bs-body-font-family: Verdana, system-ui, sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6,
 .navbar-brand {
-  font-family: "Playfair Display", Georgia, serif;
+  font-family: Garamond, Georgia, serif;
 }
 
 /*Started with bootstrap 6.0 by accident and wanted to recreate one of their button designs after I switched back to 5.3.3 */
@@ -125,6 +125,6 @@ main {
 
 .form-control:focus,
 .form-select:focus {
-  border-color: var(--accent);
+  border-color: #4b3f7a;
   box-shadow: 0 0 0 0.25rem rgba(180, 151, 214, 0.35);
 }
