@@ -27,6 +27,9 @@ h1,h2{
 .bg-accent{
   background-color: #dfddff48;
 }
+.bg-accent-2{
+  background-color: #9997b448;
+}
 
 .table > tbody > tr.row-completed > * {
   --bs-table-bg: #e6d9f59c;   
@@ -38,4 +41,14 @@ h1,h2{
 }
 .kanban-card.done {
   background-color: #e6d9f5;   
+}
+
+.text-link {
+  color: #4b3f7a;
+  text-decoration: none;
+}
+
+.text-link:hover {
+  color: #07060c;
+  text-decoration: underline;
 }
