@@ -1,54 +1,54 @@
 <!DOCTYPE html>
-<html lang="en" data-bs-theme="light">
+<html lang = "en" data-bs-theme = "light">
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset = "UTF-8">
+        <meta name = "viewport" content="width = device-width, initial-scale = 1">
 
         <title>Progress Calculator Page | ReadFast</title>
 
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.2/font/bootstrap-icons.min.css">
-        <link href="./css/styles.css" rel="stylesheet">
-        <script src="./js/main.js" defer></script>
-        <script src="./js/progresscalc.js" defer></script>
+        <link href = "https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel = "stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.2/font/bootstrap-icons.min.css">
+        <link href = "./css/styles.css" rel="stylesheet">
+        <script src = "./js/main.js" defer></script>
+        <script src = "./js/progresscalc.js" defer></script>
     </head>
     <body>
-        <header id="header-placeholder"></header>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+        <header id = "header-placeholder"></header>
+        <script src = "https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
         <main>
-            <section class="py-5 text-center">
-                <div class="container" aria-labelledby="progress-calc-title">
-                    <h1 id="progress-calc-title" class="fw-bolder text-center mb-4">Progress Calculator</h1>
-                    <p class="fw-standard lead">Find out how many pages a day you need you read in order to finish your book in the desired time!</p>
+            <section class = "py-5 text-center">
+                <div class = "container" aria-labelledby = "progress-calc-title">
+                    <h1 id = "progress-calc-title" class = "fw-bolder text-center mb-4">Progress Calculator</h1>
+                    <p class = "fw-standard lead">Find out how many pages a day you need you read in order to finish your book in the desired time!</p>
                 </div>
             </section>
             
             
-            <section class="py-5 text-center bg-accent">
-                <div class="container">
-                    <div class="row justify-content-center">
-                        <div class="col-md-8 col-lg-5">
-                            <h2 class="fw-bold text-center mb-4">Progress Calculator</h2>
+            <section class = "py-5 text-center bg-accent">
+                <div class = "container">
+                    <div class = "row justify-content-center">
+                        <div class = "col-md-8 col-lg-5">
+                            <h2 class = "fw-bold text-center mb-4">Progress Calculator</h2>
 
-                            <div class="card">
-                                <div class="card-body">
-                                    <form id="calc-form">
-                                        <div class="mb-3">
-                                            <label class="form-label" for="calc-pages">Pages in Book</label>
-                                            <input type="number" class="form-control" id="calc-pages" required>
+                            <div class = "card">
+                                <div class = "card-body">
+                                    <form id = "calc-form">
+                                        <div class = "mb-3">
+                                            <label class = "form-label" for = "calc-pages">Pages in Book</label>
+                                            <input type = "number" class = "form-control" id = "calc-pages" required>
                                         </div>
-                                        <div class="mb-3">
-                                            <label class="form-label" for="calc-days">Days to Finish</label>
-                                            <input type="number" class="form-control" id="calc-days" required>
+                                        <div class = "mb-3">
+                                            <label class = "form-label" for = "calc-days">Days to Finish</label>
+                                            <input type = "number" class = "form-control" id = "calc-days" required>
                                         </div>
                                         <div class="d-flex justify-content-center gap-2">
-                                            <button type="submit" class="btn btn-lg fw-bold theme-accent">Calculate</button>
-                                            <button type="button" class="btn btn-lg fw-bold text-danger" id="calc-reset">Reset</button>
+                                            <button type="submit" class = "btn btn-lg fw-bold theme-accent">Calculate</button>
+                                            <button type="button" class = "btn btn-lg fw-bold text-danger" id = "calc-reset">Reset</button>
                                         </div>
                                     </form>
 
-                                    <div id="calc-result" class="alert text-center mt-4 mb-0 d-none" role="status" aria-live="polite"></div>
+                                    <div id = "calc-result" class = "alert text-center mt-4 mb-0 d-none" role="status" aria-live="polite"></div>
                                 </div>
                             </div>
                         </div>
@@ -56,15 +56,15 @@
                 </div>
             </section>
 
-            <section class="py-5 bg-accent" aria-labelledby="reading-test-title">
-                <div class="container">
-                    <div class="row justify-content-center">
-                        <div class="col-md-10 col-lg-8">
-                            <h2 id="reading-test-title" class="fw-bold text-center mb-4">Reading Speed Test</h2>
+            <section class = "py-5 bg-accent" aria-labelledby = "reading-test-title">
+                <div class = "container">
+                    <div class = "row justify-content-center">
+                        <div class = "col-md-10 col-lg-8">
+                            <h2 id = "reading-test-title" class="fw-bold text-center mb-4">Reading Speed Test</h2>
 
-                            <div class="card">
-                                <div class="card-body">
-                                    <p class="text-center">
+                            <div class = "card">
+                                <div class = "card-body">
+                                    <p class = "text-center">
                                         Press <strong>Start</strong>, read the passage at your normal pace, then press <strong>Stop when you finish.</strong>
                                     </p>
 
@@ -87,14 +87,14 @@
                                         <p id = "test-passage" class = "fst-italic text-muted text-center">Passage taken from Old Greek Stories by James Baldwin</p>
                                     </div>
 
-                                    <div class="text-center fs-3 fw-bold my-3" id="test-timer" aria-live="off">0:00</div>
+                                    <div class = "text-center fs-3 fw-bold my-3" id = "test-timer" aria-live="off">0:00</div>
 
-                                    <div class="d-flex justify-content-center gap-2">
-                                        <button type="button" class="btn btn-lg fw-bold theme-accent" id="test-start">Start</button>
-                                        <button type="button" class="btn btn-lg fw-bold text-danger" id="test-stop" disabled>Stop</button>
+                                    <div class = "d-flex justify-content-center gap-2">
+                                        <button type = "button" class = "btn btn-lg fw-bold theme-accent" id = "test-start">Start</button>
+                                        <button type = "button" class = "btn btn-lg fw-bold text-danger" id = "test-stop" disabled>Stop</button>
                                     </div>
 
-                                    <div id="test-result" class="alert alert-accent text-center mt-4 mb-0 d-none" role="status" aria-live="polite"></div>
+                                    <div id = "test-result" class = "alert alert-accent text-center mt-4 mb-0 d-none" role = "status" aria-live = "polite"></div>
                                 </div>
                             </div>
                         </div>
@@ -102,73 +102,70 @@
                 </div>
             </section>
 
-            <section class="py-5 text-center">
-                <div class="container">
-                    <h2 class="fw-bolder text-center mb-4">Reading Tips From Our Readers</h2>
-                    <div class="row justify-content-center">
-                        <div class="col-md-10 col-lg-8">
-                            <div class="accordion text-center" id="tipsAccordion">
+            <section class = "py-5 text-center">
+                <div class = "container">
+                    <h2 class = "fw-bolder text-center mb-4">Reading Tips From Our Readers</h2>
+                    <div class = "row justify-content-center">
+                        <div class = "col-md-10 col-lg-8">
+                            <div class = "accordion text-center" id = "tipsAccordion">
 
-                                <div class="accordion-item">
-                                    <h3 class="accordion-header">
-                                        <button class="accordion-button fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#tip1" aria-expanded="true" aria-controls="tip1">
+                                <div class = "accordion-item">
+                                    <h3 class = "accordion-header">
+                                        <button class = "accordion-button fw-bold" type = "button" data-bs-toggle="collapse" data-bs-target="#tip1">
                                             Read every day
                                         </button>
                                     </h3>
-                                    <div id="tip1" class="accordion-collapse collapse show" data-bs-parent="#tipsAccordion">
-                                        <div class="accordion-body">
+                                    <div id = "tip1" class = "accordion-collapse collapse show" data-bs-parent = "#tipsAccordion">
+                                        <div class = "accordion-body">
                                             Set a daily timer every day and read at least 20 pages.
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="accordion-item">
-                                    <h3 class="accordion-header">
-                                        <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#tip2" aria-expanded="false" aria-controls="tip2">
+                                <div class = "accordion-item">
+                                    <h3 class = "accordion-header">
+                                        <button class = "accordion-button collapsed fw-bold" type = "button" data-bs-toggle = "collapse" data-bs-target = "#tip2" aria-expanded = "false" aria-controls = "tip2">
                                             How to get over a reading slump
                                         </button>
                                     </h3>
-                                    <div id="tip2" class="accordion-collapse collapse" data-bs-parent="#tipsAccordion">
-                                        <div class="accordion-body">
+                                    <div id = "tip2" class = "accordion-collapse collapse" data-bs-parent = "#tipsAccordion">
+                                        <div class = "accordion-body">
                                             If you are in a reading slump, pick up a book with short chapters.
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="accordion-item">
-                                    <h3 class="accordion-header">
-                                        <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#tip3" aria-expanded="false" aria-controls="tip3">
+                                <div class = "accordion-item">
+                                    <h3 class = "accordion-header">
+                                        <button class = "accordion-button collapsed fw-bold" type = "button" data-bs-toggle = "collapse" data-bs-target = "#tip3" aria-expanded = "false" aria-controls = "tip3">
                                             How to avoid distractions
                                         </button>
                                     </h3>
-                                    <div id="tip3" class="accordion-collapse collapse" data-bs-parent="#tipsAccordion">
-                                        <div class="accordion-body">
+                                    <div id = "tip3" class = "accordion-collapse collapse" data-bs-parent = "#tipsAccordion">
+                                        <div class = "accordion-body">
                                             Put your phone in another room or turn on focus mode to avoid distractions.
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="accordion-item">
-                                    <h3 class="accordion-header">
-                                        <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#tip4" aria-expanded="false" aria-controls="tip4">
+                                <div class = "accordion-item">
+                                    <h3 class = "accordion-header">
+                                        <button class = "accordion-button collapsed fw-bold" type = "button" data-bs-toggle = "collapse" data-bs-target = "#tip4" aria-expanded = "false" aria-controls = "tip4">
                                             Try audiobooks
                                         </button>
                                     </h3>
-                                    <div id="tip4" class="accordion-collapse collapse" data-bs-parent="#tipsAccordion">
-                                        <div class="accordion-body">
+                                    <div id = "tip4" class = "accordion-collapse collapse" data-bs-parent = "#tipsAccordion">
+                                        <div class = "accordion-body">
                                             Combine audiobooks with reading for an immersive experience. Some books are even meant to be heard.
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
-
         </main>
-
         <footer id = "footer-placeholder"></footer>
     </body>
 </html>
