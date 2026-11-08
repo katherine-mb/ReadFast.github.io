@@ -79,3 +79,16 @@ main {
 .alert-accent{
   background-color: #aeadc948;
 }
+
+.feature-img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100%;
+  max-height: 300px;
+  object-fit: contain;
+  border-radius: 1rem;
+  outline-style: solid;
+  outline-color: #4b3f7a;
+  outline-width: 1px;
+}
