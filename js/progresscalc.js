@@ -13,43 +13,27 @@ const testPlaceholder = document.querySelector("#test-placeholder");
 const testTimer = document.querySelector("#test-timer");
 const testResult = document.querySelector("#test-result");
 
-function showMessage(message, isError) {
-  resultBox.innerHTML = message;
-  resultBox.classList.remove("d-none");
-
-  if (isError === true) {
-    resultBox.classList.remove("alert-success");
-    resultBox.classList.add("alert-danger");
-  } else {
-    resultBox.classList.remove("alert-danger");
-    resultBox.classList.add("alert-success");
-  }
-}
-
 calcForm.addEventListener("submit", function (e) {
   e.preventDefault();
 
-  if (pagesInput.value === "" || daysInput.value === "") {
-    showMessage("Please fill in both fields.", true);
-    return;
-  }
+  resultBox.classList.remove("d-none");
 
   const pages = Number(pagesInput.value);
   const days = Number(daysInput.value);
 
   if (pages < 1 || days < 1) {
-    showMessage("Pages and days must both be at least 1.", true);
+    resultBox.innerHTML = "Pages and days must both be at least 1.";
     return;
   }
 
   if (Number.isInteger(pages) === false || Number.isInteger(days) === false) {
-    showMessage("Please enter whole numbers only.", true);
+    resultBox.innerHTML= "Please enter whole numbers only.";
     return;
   }
 
   const pagesPerDay = Math.ceil(pages / days);
 
-  showMessage(`You need to read <strong>${pagesPerDay}</strong> page(s) a day to finish a ${pages}-page book in ${days} day(s).`, false);
+  resultBox.innerHTML = `You need to read <strong>${pagesPerDay}</strong> page(s) a day to finish a ${pages}-page book in ${days} day(s).`;
 });
 
 resetBtn.addEventListener("click", function () {

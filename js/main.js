@@ -1,11 +1,12 @@
-fetch("header.html")
-  .then(response => response.text())
-  .then(html => {
-    document.querySelector("#header-placeholder").innerHTML = html;
+function loadPart(fileName, placeholderSelector) {
+  const request = fetch(fileName);
+  request.then(function (response) {
+    return response.text();
+  }).then(function (html) {
+    const placeholder = document.querySelector(placeholderSelector);
+    placeholder.innerHTML = html;
   });
+}
 
-fetch("footer.html")
-  .then(response => response.text())
-  .then(html => {
-    document.querySelector("#footer-placeholder").innerHTML = html;
-  });
+loadPart("header.html", "#header-placeholder");
+loadPart("footer.html", "#footer-placeholder"); 
